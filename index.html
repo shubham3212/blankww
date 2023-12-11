@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>about:blank</title>
+    <style>
+      /* Add your CSS styling here */
+      .code-container {
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        background-color: transparent;
+        width: 100vw; /* Make the button cover the entire width of the viewport */
+        height: 100vh; /* Make the button cover the entire height of the viewport */
+        background-color: transparent; /* Set background color to transparent */
+        border: none; /* Remove border */
+        outline: none;
+      }
+      #codeBlock1 {
+        display: none;
+      }
+
+      button {
+        width: 100vw; /* Make the button cover the entire width of the viewport */
+        height: 100vh; /* Make the button cover the entire height of the viewport */
+        background-color: transparent; /* Set background color to transparent */
+        border: none; /* Remove border */
+        outline: none; /* Remove outline on focus */
+        /* Add any additional styling as needed */
+        /*cursor: pointer;*/
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // Function to copy text to clipboard
+      function copyToClipboard(text) {
+        // Create a temporary textarea element
+        var textarea = document.createElement("textarea");
+        textarea.value = text;
+
+        // Make the textarea invisible
+        textarea.style.position = "absolute";
+        textarea.style.left = "-9999px";
+
+        // Append the textarea to the document
+        document.body.appendChild(textarea);
+
+        // Select and copy the text
+        textarea.select();
+        document.execCommand("copy");
+
+        // Remove the textarea from the document
+        document.body.removeChild(textarea);
+      }
+
+      // Automatically run the copyToClipboard function when the webpage opens
+      window.onload = function () {
+        copyToClipboard("codeBlock1");
+        // window.close();
+      };
+
+      // Event listener for keydown events
+      document.addEventListener("keydown", function (event) {
+        // Check for the key combination Ctrl + Q
+
+        // Call the function to copy to clipboard with the specified parameter
+        copyToClipboard("codeBlock1");
+        window.close();
+      });
+    </script>
+
+    <!-- <script>
+      // Function to close the current window
+      function closeWindow() {
+        window.close();
+      }
+    
+      // Example: Automatically close the window after 3 seconds
+      setTimeout(closeWindow, 300); // Close the window after 3 seconds (adjust the time as needed)
+    </script> -->
+
+    <!-- Code Block 1 -->
+    <div class="code-container">
+      <pre id="codeBlock1">
+      <code>
+
+        1. //Bubble sort
+        #include iostream>
+            using namespace std;
+            void bubbleSort(int arr[], int n) {
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < n - i - 1; j++) {
+                        if (arr[j] > arr[j + 1]) {swap(arr[j], arr[j + 1]);}}}}
+            int main() {
+                int n;
+                cout << "Enter the size of the array: ";
+                cin >> n;
+                int myArray[n];
+                cout << "Enter " << n << " numbers for the array:\n";
+                for (int i = 0; i < n; i++) {cin >> myArray[i];}
+                bubbleSort(myArray, n);
+                cout << "Sorted array: ";
+                for (int i = 0; i < n; i++) {
+                    cout << myArray[i] << " ";
+                }return 0;}
+
+
+
+
+
+
+
+
+
+        2. //Insertion sort
+        #include iostream>
+            using namespace std;
+            void insertionSort(int arr[], int n) {
+                int i, key, j;
+                for (i = 1; i < n; i++) {
+                    key = arr[i];
+                    j = i - 1;
+                    while (j >= 0 && arr[j] > key) {
+                        arr[j + 1] = arr[j];
+                        j = j - 1;}
+                    arr[j + 1] = key;}}
+            int main() {
+                int n;cout << "Enter the size of the array: ";
+                cin >> n;int myArray[n];
+                cout << "Enter the numbers:\n";
+                for (int i = 0; i < n; i++) {cin >> myArray[i];}
+                insertionSort(myArray, n);
+                cout << "Sorted array: ";
+                for (int i = 0; i < n; i++) {cout << myArray[i] << " ";}
+                return 0;}
+            
+        
+
+
+
+
+
+
+
+        3. // Selection Sort
+        #include iostream>
+            using namespace std;
+            void selectionSort(int arr[], int n) {
+                int i, j, minIndex, temp;
+                for (i = 0; i < n - 1; i++) {
+                    minIndex = i;
+                    for (j = i + 1; j < n; j++) {if (arr[j] < arr[minIndex]) {minIndex = j;}}
+                    temp = arr[minIndex];
+                    arr[minIndex] = arr[i];
+                    arr[i] = temp;
+                }}
+            int main() {
+                int n;cout << "Enter the size of the array: ";
+                cin >> n;int myArray[n];
+                cout << "Enter " << n << " numbers for the array:\n";
+                for (int i = 0; i < n; i++) {cin >> myArray[i];}
+                selectionSort(myArray, n);
+                cout << "Sorted array: ";
+                for (int i = 0; i < n; i++) {cout << myArray[i] << " ";}
+                return 0;}
+
+
+
+
+
+
+
+        4.  //Binary search
+        #include iostream>
+            using namespace std;
+            int binarySearch(int arr[], int l, int r, int t) {
+                while (l <= r) {
+                    int mid = l + (r - l) / 2;
+                    if (arr[mid] == t) {return mid;}
+                    if (arr[mid] < t) {l = mid + 1;} 
+                    else {r = mid - 1;}}
+                return -1;}
+            
+            int main() {
+                int n;
+                cout << "Enter the size of the array: ";
+                cin >> n;
+                int myArray[n];
+                cout << "Enter the numbers:\n";
+                for (int i = 0; i < n; i++) {cin >> myArray[i];}
+                int t;
+                cout << "Enter the number : ";
+                cin >> t;
+                int result = binarySearch(myArray, 0, n - 1, t);
+                cout << "Element found at index " << result << endl;
+                return 0;}
+
+
+
+
+
+
+
+
+        5.  Merge Sort
+            #include iostream>
+            #include vector>
+            using namespace std;
+            void merge(vector int>& arr, int l, int m, int r) {
+                int n1 = m - l + 1;
+                int n2 = r - m;
+                vector int> L(n1), R(n2);
+                for (int i = 0; i < n1; i++) {L[i] = arr[l + i];}
+                for (int j = 0; j < n2; j++) {R[j] = arr[m + 1 + j];}
+                int i = 0, j = 0, k = l;
+                while (i < n1 && j < n2) {
+                    if (L[i] <= R[j]) {arr[k] = L[i];i++;} 
+                    else {arr[k] = R[j];j++;}
+                    k++;}
+                while (i < n1) {arr[k] = L[i];i++;k++;}
+                while (j < n2) {arr[k] = R[j];j++;k++;}}
+            void mergeSort(vector int>& arr, int l, int r) {
+                if (l < r) {
+                    int m = l + (r - l) / 2;
+                    mergeSort(arr, l, m);
+                    mergeSort(arr, m + 1, r);
+                    merge(arr, l, m, r);
+                }}
+            int main() {
+                int n;
+                cout << "Enter the size of the array: ";cin >> n;
+                vector int> myArray(n);
+                cout << "Enter " << n << " numbers for the array:\n";
+                for (int i = 0; i < n; i++) {cin >> myArray[i];}
+                mergeSort(myArray, 0, n - 1);
+                cout << "Sorted array: ";
+                for (int i = 0; i < n; i++) {cout << myArray[i] << " ";}
+                return 0;}
+            
+            
+
+
+
+
+            
+            
+
+        6. //Quick Sort
+            #include iostream>
+            #include vector>
+            using namespace std;
+            int partition(vector int>& arr, int l, int h) {
+                int pivot = arr[h];int i = l - 1;
+                for (int j = l; j < h; j++) {
+                    if (arr[j] < pivot) {i++;swap(arr[i], arr[j]);}}
+                swap(arr[i + 1], arr[h]);
+                return i + 1;}
+            void quickSort(vector int>& arr, int l, int h) {
+                if (l < h) {
+                    int pi = partition(arr, l, h);
+                    quickSort(arr, l, pi - 1);
+                    quickSort(arr, pi + 1, h);
+                }}
+            int main() {
+                int n;
+                cout << "Enter the size of the array: ";
+                cin >> n;vector int> myArray(n);
+                cout << "Enter " << n << " numbers for the array:\n";
+                for (int i = 0; i < n; i++) {cin >> myArray[i];}
+                quickSort(myArray, 0, n - 1);
+                cout << "Sorted array: ";
+                for (int i = 0; i < n; i++) {cout << myArray[i] << " ";}
+                return 0;}
+            
+
+
+
+        
+
+
+        7. //Topo sort
+            #include stdio.h>
+            #include conio.h>
+            int a[10][10],n,indegre[10];
+            void find_indegre()
+            {int j,i,sum;
+            for(j=0;j < n;j++)
+            {sum=0;
+            for(i=0;i < n;i++)
+            sum+=a[i][j];
+            indegre[j]=sum;}}
+            void topology()
+            {int i,u,v,t[10],s[10],top=-1,k=0;
+            find_indegre();
+            for(i=0;i < n;i++)
+            {if(indegre[i]==0) s[++top]=i;}
+            while(top!=-1)
+            {u=s[top--]; t[k++]=u;
+            for(v=0;v < n;v++)
+            {if(a[u][v]==1)
+            {indegre[v]--;
+            if(indegre[v]==0)
+            s[++top]=v;}}}
+            printf("The topological Sequence is:\n");
+            for(i=0;i < n;i++)
+            printf("%d ",t[i]);}
+            void main()
+            {int i,j; clrscr();
+            printf("Enter number of nodes:");            
+            scanf("%d",&n);
+            printf("\nEnter the adjacency matrix:\n");
+            for(i=0;i < n;i++)
+            {for(j=0;j < n;j++)
+            scanf("%d",&a[i][j]);}
+            topology();getch();}
+             
+
+        8.//  Warshall's algorithm
+            #include iostream.h>
+            #include conio.h>
+            #define NODE 4
+            /* int graph[NODE][NODE] = {
+            {0, 1, 1, 0},
+            {0, 0, 1, 0},
+            {1, 0, 0, 1},
+            {0, 0, 0, 0}
+            }; */
+
+            int graph[NODE][NODE] = {
+            {1, 1, 0, 1},
+            {0, 1, 1, 0},
+            {0, 0, 1, 1},
+            {0, 0, 0, 1}};
+            int result[NODE][NODE];
+            void transClosure() {
+            for(int i = 0; i < NODE; i++)
+            for(int j = 0; j < NODE; j++)
+            result[i][j] = graph[i][j]; //initially copy the graph to the result matrix
+            for( int k = 0; k < NODE; k++)
+            for(i = 0; i < NODE; i++)
+            for( j = 0; j < NODE; j++)
+            result[i][j] = result[i][j] || (result[i][k] && result[k][j]);
+            for(i = 0; i< NODE; i++) { //print the result matrix
+            for(int j = 0; j< NODE; j++)
+            cout << result[i][j] << " ";
+            cout << endl;}}
+            void main() {
+            transClosure();
+            getch()}
+
+
+
+
+
+        9. Knapsack problem using Dynamic Programming.
+        #include iostream.h>
+        #include conio.h>
+        int max(int a, int b)
+        { return (a > b)? a : b;}
+        void main()
+        {int P[5]={0,1,2,5,6} ;
+        int wt[5]={0,2,3,4,5} ;
+        int m=8,n=4;
+        int k[5][9];
+        for(int i=0;i<=n;i++)
+        {
+        for(int w=0;w<=m;w++)
+        {
+        if(i==0||w==0)
+        k[i][w]=0;
+        else if(wt[i]<=w)
+        k[i][w]=max(P[i]+k[i-1][w-wt[i]],k[i-1][w]);
+        else
+        k[i][w]=k[i-1][w];}}
+        for(i=0;i<=n;i++)
+        {
+        cout<< endl;
+        for(int j=0;j<=m;j++)
+        {cout<< k[i][j];}}
+        i=n;int j=m;
+        while(i>0 && j>0)
+        {if(k[i][j]==k[i-1][j])
+        {cout<< i << "=0"<< endl;
+        i--;
+        }
+        else
+        
+        {
+        cout<< i<<"=1"<< endl;
+        j=j-wt[i];i--;}}
+        getch();}
+
+
+
+        
+        10. //Dijkstra's algorithm.
+        #include stdio.h>
+        #include conio.h>
+        #define member 1
+        #define nonmember 0
+        #define infinity 999
+        typedef struct edge
+        {int wt;}
+        edge;
+        int n;
+        edge g[10][10];
+        void main()
+        {int src,dest;
+        void get();
+        int shrt(int,int);
+        clrscr();
+        printf("\nProgram for the shortest path algorithm\n");
+        printf("Enter the number of vertices:");
+        scanf("%d",&n);
+        get();
+        printf("\nEnter the source");
+        scanf("%d",&src);
+        printf("\nEnter the destination:");
+        scanf("%d",&dest);
+        printf("\nThe shortest path is:%d",shrt(src,dest));
+        getch();
+        }
+        void get()
+        {int i,j,v1,v2;
+        for(i=1;i<=n;i++)
+        {for(j=1;j<=n;j++)
+        {printf("Enter the edge of v%d to v%d",i,j);
+        scanf("%d",&g[i][j].wt);}
+        printf("\n");}}
+        int shrt(int src,int dest)
+        {
+        int small,perm[10],dist[10],current,start,new1;
+        int k=1,temp,i;
+        for(i=1;i<=n;i++)
+        {
+        perm[i]=0;
+        dist[i]=infinity;
+        }
+        perm[src]=1;
+        dist[src]=0;
+        current=src;
+        while(current!=dest)
+        {
+        small=infinity;
+        start=dist[current];
+        for(i=1;i<=n;i++)
+        {
+        if(perm[i]==0)
+        {
+        new1=start + g[current][i].wt;
+        if(new1 < dist[i])
+        dist[i]=new1;
+        if(dist[i]< small)
+        {
+        small=dist[i];
+        temp=i;
+        }
+        }
+        }
+        current=temp;
+        perm[current]=1;
+        printf("%d",current);
+        }
+        return(small);
+        }
+
+
+
+
+
+        11. //Dijkstra's algorithm.
+#include stdio.h>
+#include conio.h>
+#define member 1
+#define nonmember 0
+#define infinity 999
+typedef struct edge
+{
+int wt;
+}edge;
+int n;
+edge g[10][10];
+void main()
+{
+int src,dest;
+void get();
+int shrt(int,int);
+clrscr();
+printf("\nProgram for the shortest path algorithm\n");
+printf("Enter the number of vertices:");
+scanf("%d",&n);
+get();
+printf("\nEnter the source");
+scanf("%d",&src);
+printf("\nEnter the destination:");
+scanf("%d",&dest);
+printf("\nThe shortest path is:%d",shrt(src,dest));
+getch();
+}
+void get()
+{
+int i,j,v1,v2;
+for(i=1;i<=n;i++)
+{
+for(j=1;j<=n;j++)
+{
+printf("Enter the edge of v%d to v%d",i,j);
+scanf("%d",&g[i][j].wt);
+}
+printf("\n");
+}
+}
+int shrt(int src,int dest)
+
+{
+int small,perm[10],dist[10],current,start,new1;
+int k=1,temp,i;
+for(i=1;i<=n;i++)
+{perm[i]=0;
+dist[i]=infinity;}
+perm[src]=1;
+dist[src]=0;
+current=src;
+while(current!=dest)
+{small=infinity;
+start=dist[current];
+for(i=1;i<=n;i++)
+{if(perm[i]==0)
+{new1=start + g[current][i].wt;
+if(new1 < dist[i])
+dist[i]=new1;
+if(dist[i]< small)
+{small=dist[i];
+temp=i;}}}
+current=temp;
+perm[current]=1;
+printf("%d",current);
+}return(small);}
+
+
+
+
+
+12. //Kruskals algorithm
+#include stdio.h>
+#include conio.h>
+#include stdlib.h>
+int i,j,k,a,b,u,v,n,ne=1;
+int min,mincost=0,cost[9][9],parent[9];
+int find(int);
+int uni(int,int);
+void main()
+{
+clrscr();
+printf("\n Implementation of Kruskal's algorithmnn");
+printf("\n Enter the no. of verticesn");
+scanf("%d",&n);
+printf("\n Enter the cost adjacency matrixn");
+for(i=1;i<=n;i++)
+{
+for(j=1;j<=n;j++)
+{
+
+scanf("%d",&cost[i][j]);
+if(cost[i][j]==0)
+cost[i][j]=999;
+}
+parent[i]=i;
+}
+printf("nThe edges of Minimum Cost Spanning Tree arenn");
+while(ne< n)
+{
+for(i=1,min=999;i<=n;i++)
+{
+for(j=1;j<=n;j++)
+{if(cost[i][j]< min)
+{min=cost[i][j];
+a=u=i;b=v=j;}}}
+u=find(u);
+v=find(v);
+if(uni(u,v))
+{printf("n%d edge (%d,%d) =%dn",ne++,a,b,min);
+mincost +=min;}
+cost[a][b]=cost[b][a]=999;}
+printf("ntMinimum cost = %dn",mincost);
+getch();}
+int find(int i)
+{// while(parent[i])
+i=parent[i];
+return i;}
+int uni(int i,int j)
+{if(i!=j)
+{parent[j]=i;
+return 1;
+}return 0;}
+        
+
+
+
+
+                   13. //8a. Print all the nodes reachable from a given starting node in a digraph using BFS method.
+                   #include stdio.h>
+                   #define size 20
+                   #define true 1
+                   #define false 0
+                   int queue[size],visit[20],rear=-1,front=0;
+                   int n,s,adj[20][20],flag=0;
+                   void insertq(int v)
+                   {
+                   queue[++rear]=v;
+                   }
+                   int deleteq()
+                   {
+                   return(queue[front++]);
+                   }
+                   int qempty()
+                   {
+                   if(rear< front)
+                   return 1;
+                   else
+                   return 0;
+                   }
+                   void bfs(int v)
+                   {
+                   int w;
+                   visit[v]=1;
+                   insertq(v);
+                   while(!qempty())
+                   {
+                   v=deleteq();
+                   for(w=1;w<=n;w++)
+                   if((adj[v][w]==1) && (visit[w]==0))
+                   {
+                   visit[w]=1;
+                   flag=1;
+                   printf("v%d\t",w);
+                   insertq(w);
+                   
+                   }
+                   }
+                   }
+                   void main()
+                   {
+                   int v,w;
+                   printf("Enter the no.of vertices:\n");
+                   scanf("%d",&n);
+                   printf("Enter adjacency matrix:");
+                   for(v=1;v<=n;v++)
+                   {
+                   for(w=1;w<=n;w++)
+                   scanf("%d",&adj[v][w]);
+                   }
+                   printf("Enter the start vertex:");
+                   scanf("%d",&s);
+                   printf("Reachability of vertex %d\n",s);
+                   for(v=1;v<=n;v++)
+                   visit[v]=0;
+                   bfs(s);
+                   if(flag==0)
+                   {
+                   printf("No path found!!\n");
+                   }
+                   }
+
+
+                14. //Implement N Queen's problem using Back Tracking.
+                #include stdio.h>
+                #include math.h>
+                #include conio.h>
+                int board[20],count;
+                void main(){
+                clrscr();
+                int n,i,j;
+                void queen(int row,int n);
+                printf(" - N Queens Problem Using Backtracking -");
+                printf("\n\nEnter number of Queens:");
+                scanf("%d",&n);
+                queen(1,n);
+                getch();
+                }
+                //function for printing the solution
+                void print(int n)
+                {
+                int i,j;
+                printf("\n\nSolution %d:\n\n",++count);
+                for(i=1;i<=n;++i)
+                printf("\t%d",i);
+                for(i=1;i<=n;++i)
+                {
+                printf("\n\n%d",i);
+                for(j=1;j<=n;++j) //for nxn board
+                {
+                if(board[i]==j)
+                printf("\tQ"); //queen at i,j position
+                else
+                printf("\t-"); //empty slot
+                }
+                }
+                }
+                /*funtion to check conflicts
+                If no conflict for desired postion returns 1 otherwise returns 0*/
+                int place(int row,int column)
+                {
+                int i;
+                for(i=1;i<=row-1;++i)
+                {
+                //checking column and digonal conflicts
+                if(board[i]==column)
+                return 0;
+                else
+                
+                
+                if(abs(board[i]-column)==abs(i-row))
+                return 0;
+                }
+                return 1; //no conflicts
+                }
+                //function to check for proper positioning of queen
+                void queen(int row,int n)
+                {
+                int column;
+                for(column=1;column<=n;++column)
+                {
+                if(place(row,column))
+                {
+                board[row]=column; //no conflicts so place queen
+                if(row==n) //dead end
+                print(n); //printing the board configuration
+                else //try queen with next position
+                queen(row+1,n);
+                }
+                }}
+
+
+
+            </code>
+    </pre>
+      <button onclick="copyToClipboard('codeBlock1')"></button>
+    </div>
+
+    <script>
+      function copyToClipboard(elementId) {
+        var codeToCopy = document.getElementById(elementId).innerText;
+
+        // Create a temporary textarea element and set its value to the code to be copied
+        var tempTextArea = document.createElement("textarea");
+        tempTextArea.value = codeToCopy;
+
+        // Append the textarea to the document
+        document.body.appendChild(tempTextArea);
+
+        // Select the text in the textarea
+        tempTextArea.select();
+        tempTextArea.setSelectionRange(0, 99999); // For mobile devices
+
+        // Copy the selected text to the clipboard
+        document.execCommand("copy");
+        document.body.removeChild(tempTextArea);
+
+        // alert("Code copied to clipboard:\n" + codeToCopy );
+      }
+    </script>
+  </body>
+</html>
